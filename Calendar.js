@@ -1,6 +1,11 @@
-////get current month and day, then display it as default when opened
-function setCalendar() {
-    const currentDate = new Date();
+
+
+let currentDate = new Date();
+setCalendar(currentDate.getFullYear() + "-" + currentDate.getMonth() + 2);
+
+//get current month and day, then display it as default when opened
+function setCalendar(date) {
+    let currentDate = new Date(date);
     let currentMonth = currentDate.getMonth();
     let currentDay = currentDate.getDay();
     let currentDayOfMonth = currentDate.getDate();
@@ -23,7 +28,7 @@ function setCalendar() {
     currentDay = TranslateDay(currentDay);
     currentMonth = TranslateMonth(currentMonth)
 
-    dateDisplay.innerHTML = currentMonth + " " + currentDayOfMonth + " " + currentDay;
+    dateDisplay.innerHTML = currentMonth + " " + currentYear;
 }
 
 
@@ -466,10 +471,22 @@ function LoadDayCells(date) {
             break;
     }
 
-
-
-
 }
 
+//take user month input, and year, will update calendar with new date according to the first of said month.
 
-setCalendar();
+let dropDownMenu = document.getElementById("Months");
+
+dropDownMenu.addEventListener('change', function(){
+    let selectedValue = dropDownMenu.value;
+    selectedValue = (selectedValue.split(","));
+    let date = selectedValue[1] + "-" + selectedValue[0] + "-" + 2;
+    setCalendar(date);
+})
+
+
+
+
+
+
+
