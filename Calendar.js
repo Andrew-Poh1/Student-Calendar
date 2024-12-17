@@ -1,7 +1,10 @@
 
 
 let currentDate = new Date();
-setCalendar(currentDate.getFullYear() + "-" + currentDate.getMonth() + 2);
+let currentMonth = currentDate.getMonth();
+currentMonth+=1;
+
+setCalendar(currentDate.getFullYear() + "-" + currentMonth + "-" + 2);
 
 //get current month and day, then display it as default when opened
 function setCalendar(date) {
@@ -25,10 +28,10 @@ function setCalendar(date) {
     LoadDayCells(firstOfMonthInfo);
 
 
-    currentDay = TranslateDay(currentDay);
-    currentMonth = TranslateMonth(currentMonth)
+    // currentDay = TranslateDay(currentDay);
+    // currentMonth = TranslateMonth(currentMonth)
 
-    dateDisplay.innerHTML = currentMonth + " " + currentYear;
+    // dateDisplay.innerHTML = currentMonth + " " + currentYear;
 }
 
 
@@ -473,20 +476,14 @@ function LoadDayCells(date) {
 
 }
 
-//take user month input, and year, will update calendar with new date according to the first of said month.
+function DisplayDateForUser(date){
+    selectedDate = new Date(date);
+    let month = TranslateMonth(selectedDate.getMonth());
+    document.getElementById("month").innerHTML = month;
 
-let dropDownMenu = document.getElementById("Months");
+    let year = selectedDate.getFullYear();
+    document.getElementById('year').innerHTML = year;
 
-dropDownMenu.addEventListener('change', function(){
-    let selectedValue = dropDownMenu.value;
-    selectedValue = (selectedValue.split(","));
-    let date = selectedValue[1] + "-" + selectedValue[0] + "-" + 2;
-    setCalendar(date);
-})
+}
 
-
-
-
-
-
-
+DisplayDateForUser(currentDate.getFullYear() + "-" + currentMonth + "-" + 2);

@@ -3,12 +3,57 @@
     margin: 0;
     box-sizing: border-box;
 }
+#pageWrapper{
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+#calendar{
+    margin: auto;
+}
+#month{
+    border: 1px solid black;
+    padding: 6px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+#monthCalculator{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}
+#plusMonth, #minusMonth{
+    padding: 6px;
+    margin: 0;
+    border: 1px solid black;
+    border-radius: 0;
+}
 
+#year{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 6px 49.5px;
+    margin-top: 4px;
+}
 .day-cell{
     border: 1px solid black;
     height: 100px;
     width: 100px;
+    transition: all .5s;
+}
+.day-cell:hover{
+    background-color: pink;
 }
 .days{
     text-align: center;
+}
+#inputDate{
+    display: inline-block;
+}
+#displayDate{
+    padding: 20px;
 }
