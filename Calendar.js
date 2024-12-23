@@ -8,6 +8,7 @@ setCalendar(currentDate.getFullYear() + "-" + currentMonth + "-" + 2);
 
 //get current month and day, then display it as default when opened
 function setCalendar(date) {
+    console.log(date);
     let currentDate = new Date(date);
     let currentMonth = currentDate.getMonth();
     let currentDay = currentDate.getDay();
@@ -28,14 +29,14 @@ function setCalendar(date) {
     LoadDayCells(firstOfMonthInfo);
 
 
-    // currentDay = TranslateDay(currentDay);
-    // currentMonth = TranslateMonth(currentMonth)
+    DisplayDateForUser(currentDate.getFullYear() + "-" + month + "-" + 2);
 
-    // dateDisplay.innerHTML = currentMonth + " " + currentYear;
+
+    
 }
 
 
-//turns month to day given month number
+//turns month to name given month number
 function TranslateMonth(MonthNum) {
     switch (MonthNum) {
         case 0:
@@ -476,6 +477,7 @@ function LoadDayCells(date) {
 
 }
 
+//gets current month and year display it for the user
 function DisplayDateForUser(date){
     selectedDate = new Date(date);
     let month = TranslateMonth(selectedDate.getMonth());
@@ -486,4 +488,65 @@ function DisplayDateForUser(date){
 
 }
 
-DisplayDateForUser(currentDate.getFullYear() + "-" + currentMonth + "-" + 2);
+
+//takes current display of month + user click on plus month button / minus month button
+//changes month on screen and calendar
+//could only run in main function beacuse month needs to be there, and is only there after main function runs.
+function plusMonth(){
+    let currentMonth = document.getElementById("month");
+    let swtichStatement = document.getElementById("month").innerHTML;
+    
+    let currentYear = document.getElementById("year");
+    let switchYear = document.getElementById("year").innerHTML;
+
+
+    let monthNum = 0;
+    
+
+    switch (swtichStatement){
+        case "January":
+            monthNum = 2;
+            break;
+        case "February":
+            monthNum = 3;
+            break;
+        case "March":
+            monthNum = 4;
+            break;
+        case "April":
+            monthNum = 5;
+            break;
+        case "May":
+            monthNum = 6;
+            break;
+        case "June":
+            monthNum = 7;
+            break;
+        case "July":
+            monthNum = 8;
+            break;
+        case "August":
+            monthNum = 9;
+            break;
+        case "September":
+            monthNum = 10;
+            break;
+        case "October":
+            monthNum = 11;
+            break;
+        case "November":
+            monthNum = 12;
+            break;
+        case "December":
+            monthNum = 1;
+            currentYear.innerHTML = Number(switchYear) + 1;
+            break;
+        default:
+            console.log("something went wrong");
+    }
+
+
+    setCalendar(currentYear.innerHTML + '-' + monthNum + '-' + 2);
+
+
+}

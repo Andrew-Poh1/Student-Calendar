@@ -19,6 +19,8 @@
     padding: 6px;
     margin-left: 4px;
     margin-right: 4px;
+    width: 100px;
+    min-width: 100px;
 }
 #monthCalculator{
     display: flex;
@@ -31,12 +33,17 @@
     margin: 0;
     border: 1px solid black;
     border-radius: 0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.151);
+    transition: all .2s;
+}
+#plusMonth:active, #minusMonth:active{
+    box-shadow: none;
 }
 
 #year{
     display: inline-block;
     border: 1px solid black;
-    padding: 6px 49.5px;
+    padding: 6px 60px;
     margin-top: 4px;
 }
 .day-cell{
